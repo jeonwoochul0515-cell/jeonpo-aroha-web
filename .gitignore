@@ -1,0 +1,47 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# build
+dist
+dist-ssr
+build
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# env
+.env
+.env.local
+.env.*.local
+
+# wrangler
+.wrangler
+.dev.vars
+
+# source materials (research / private originals)
+_source/
+
+# tooling
+.claude/
+
+# tsc build output for vite.config
+vite.config.d.ts
+vite.config.js
+*.tsbuildinfo
