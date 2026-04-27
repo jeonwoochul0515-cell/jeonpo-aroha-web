@@ -184,7 +184,7 @@ export const messages: Record<Lang, Messages> = {
     'promo.alt': '한우대창 국물 닭발',
 
     // ============ INSTAGRAM ============
-    'insta.kicker': 'Instagram · @jeonpo_aroha',
+    'insta.kicker': 'Instagram · @jeonpo_aloha_',
     'insta.h1': '오늘의 아로하,',
     'insta.h2': '인스타에서 더 가까이.',
     'insta.lead':
@@ -359,7 +359,7 @@ export const messages: Record<Lang, Messages> = {
     'promo.close': 'Close',
     'promo.alt': 'Spicy chicken feet stew with chitterlings',
 
-    'insta.kicker': 'Instagram · @jeonpo_aroha',
+    'insta.kicker': 'Instagram · @jeonpo_aloha_',
     'insta.h1': "Today's Aroha,",
     'insta.h2': 'closer on Instagram.',
     'insta.lead':
@@ -534,7 +534,7 @@ export const messages: Record<Lang, Messages> = {
     'promo.close': '閉じる',
     'promo.alt': '韓牛ホルモンと鶏足のピリ辛煮込み',
 
-    'insta.kicker': 'Instagram · @jeonpo_aroha',
+    'insta.kicker': 'Instagram · @jeonpo_aloha_',
     'insta.h1': '今日のアロハを、',
     'insta.h2': 'Instagramで、もっと近くに。',
     'insta.lead':

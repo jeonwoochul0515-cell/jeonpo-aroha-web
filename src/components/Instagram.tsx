@@ -13,12 +13,13 @@ import { useT } from '../i18n/I18nContext';
  * Instagram 공식 임베드 스크립트: https://www.instagram.com/embed.js
  */
 
-const INSTAGRAM_HANDLE = 'jeonpo_aroha';
+const INSTAGRAM_HANDLE = 'jeonpo_aloha_';
 const HASHTAG = '%EC%A0%84%ED%8F%AC%EC%95%84%EB%A1%9C%ED%95%98'; // #전포아로하
 
 const EMBED_POSTS: string[] = [
-  // 예: 'https://www.instagram.com/p/XXXXXXXXX/',
-  // 비어 있으면 아래 정적 카드가 표시됩니다.
+  'https://www.instagram.com/reel/DS4ELemEey7/',
+  'https://www.instagram.com/p/DMKgtllyBLO/',
+  'https://www.instagram.com/p/DMcjLqVS_tn/',
 ];
 
 const fallbackCards = [
