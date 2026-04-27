@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react';
 import Reveal from './Reveal';
 import { menu, categories, type MenuCategory } from '../data/menu';
+import { useI18n } from '../i18n/I18nContext';
 
 const fmt = new Intl.NumberFormat('ko-KR');
 
 export default function Menu() {
+  const { t, lang } = useI18n();
   const [active, setActive] = useState<MenuCategory | 'all'>('all');
 
   const filtered = useMemo(
@@ -20,16 +22,9 @@ export default function Menu() {
     <section className="menu-section" id="menu">
       <div className="container">
         <Reveal className="section-head">
-          <span className="kicker">Menu · 한식과 양식의 조화</span>
-          <h2 className="h-section">
-            술이 부르는 안주들,
-            <br />
-            모두 정성으로 끓여 냅니다.
-          </h2>
-          <p className="lead">
-            테이블마다 비치된 태블릿(티오더)으로 편하게 주문하세요. 가격은 부가세
-            포함이며, 시즌에 따라 일부 변동될 수 있습니다.
-          </p>
+          <span className="kicker">{t('menu.kicker')}</span>
+          <h2 className="h-section">{t('menu.h1')}<br />{t('menu.h2')}</h2>
+          <p className="lead">{t('menu.lead')}</p>
         </Reveal>
 
         <Reveal>
@@ -40,7 +35,7 @@ export default function Menu() {
                 className={active === c.key ? 'active' : ''}
                 onClick={() => setActive(c.key)}
               >
-                {c.label}
+                {t(c.tKey)}
               </button>
             ))}
           </div>
@@ -48,27 +43,19 @@ export default function Menu() {
 
         <Reveal>
           <div className="menu-grid">
-            <div>
-              {left.map((m) => (
-                <Row key={m.name} {...m} />
-              ))}
-            </div>
-            <div>
-              {right.map((m) => (
-                <Row key={m.name} {...m} />
-              ))}
-            </div>
+            <div>{left.map((m) => <Row key={m.id} item={m} lang={lang} t={t} />)}</div>
+            <div>{right.map((m) => <Row key={m.id} item={m} lang={lang} t={t} />)}</div>
           </div>
         </Reveal>
 
         <div className="menu-foot">
-          <p>* 메뉴 항목과 가격은 매장 사정에 따라 변동될 수 있습니다.</p>
+          <p>{t('menu.foot.note')}</p>
           <a
             href="https://m.place.naver.com/restaurant/1387800087/menu/list"
             target="_blank"
             rel="noopener noreferrer"
           >
-            네이버 메뉴판 이미지로 보기 →
+            {t('menu.foot.naver')}
           </a>
         </div>
       </div>
@@ -77,27 +64,26 @@ export default function Menu() {
 }
 
 interface RowProps {
-  name: string;
-  desc: string;
-  price: number;
-  pill?: 'SIGNATURE' | 'HOT' | 'FREE';
+  item: (typeof menu)[number];
+  lang: 'ko' | 'en' | 'ja';
+  t: (k: string) => string;
 }
 
-function Row({ name, desc, price, pill }: RowProps) {
+function Row({ item, lang, t }: RowProps) {
   return (
     <div className="menu-row">
       <div>
         <div className="name">
-          {name}{' '}
-          {pill && (
-            <span className={`pill${pill !== 'SIGNATURE' ? ' gold' : ''}`}>{pill}</span>
+          {item.name[lang]}{' '}
+          {item.pill && (
+            <span className={`pill${item.pill !== 'SIGNATURE' ? ' gold' : ''}`}>{item.pill}</span>
           )}
         </div>
-        <div className="desc">{desc}</div>
+        <div className="desc">{item.desc[lang]}</div>
       </div>
       <div className="price">
-        {fmt.format(price)}
-        <small>원</small>
+        {fmt.format(item.price)}
+        <small>{t('menu.unit')}</small>
       </div>
     </div>
   );

@@ -1,27 +1,23 @@
 import Reveal from './Reveal';
+import { useT } from '../i18n/I18nContext';
 
 const photos = [
-  { cls: 'v1', src: '/images/spicy-daechang.png', caption: '국물닭발', alt: '매콤 대창 국물닭발' },
-  { cls: 'v2', src: '/images/hero-spread.jpg', caption: 'The Aroha Table', alt: '아로하 한 상' },
-  { cls: 'v3', src: '/images/crab-jang.jpg', caption: '여수식 게장', alt: '여수식 돌산게장' },
-  { cls: 'v4', src: '/images/night-noodle.jpg', caption: '새벽 3시', alt: '밤의 한 상' },
-  { cls: 'v5', src: '/images/soju-spread.jpg', caption: '술 한 잔', alt: '술과 함께' },
+  { cls: 'v1', src: '/images/spicy-daechang.png', capKey: 'vibe.cap1' },
+  { cls: 'v2', src: '/images/hero-spread.jpg', capKey: 'vibe.cap2' },
+  { cls: 'v3', src: '/images/crab-jang.jpg', capKey: 'vibe.cap3' },
+  { cls: 'v4', src: '/images/night-noodle.jpg', capKey: 'vibe.cap4' },
+  { cls: 'v5', src: '/images/soju-spread.jpg', capKey: 'vibe.cap5' },
 ];
 
 export default function Vibe() {
+  const t = useT();
   return (
     <section className="vibe" id="vibe">
       <div className="container">
         <Reveal className="section-head">
-          <span className="kicker">Atmosphere · 벚꽃 핀 야장</span>
-          <h2 className="h-section">
-            개방감 가득한 야장,
-            <br />매 정각 내리는 한 줌의 설렘.
-          </h2>
-          <p className="lead">
-            전체 폴딩 도어를 활짝 열어 트인 공간으로. 봄에는 벚꽃, 겨울에는 매 정각마다
-            내리는 눈으로 잠시 휴양지에 데려다 드립니다.
-          </p>
+          <span className="kicker">{t('vibe.kicker')}</span>
+          <h2 className="h-section">{t('vibe.h1')}<br />{t('vibe.h2')}</h2>
+          <p className="lead">{t('vibe.lead')}</p>
         </Reveal>
 
         <div className="vibe-grid">
@@ -32,8 +28,8 @@ export default function Vibe() {
               className={p.cls}
               delay={(((i % 3) + 1) as 1 | 2 | 3)}
             >
-              <img src={p.src} alt={p.alt} loading="lazy" />
-              <figcaption>{p.caption}</figcaption>
+              <img src={p.src} alt={t(p.capKey)} loading="lazy" />
+              <figcaption>{t(p.capKey)}</figcaption>
             </Reveal>
           ))}
         </div>

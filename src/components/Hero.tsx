@@ -1,4 +1,5 @@
 import Reveal from './Reveal';
+import { useT } from '../i18n/I18nContext';
 
 const marqueeItems = [
   '버터갈릭꽃게구이',
@@ -12,34 +13,26 @@ const marqueeItems = [
 ];
 
 export default function Hero() {
+  const t = useT();
   return (
     <section className="hero" id="top">
       <div className="container">
         <Reveal className="hero-text">
-          <span className="eyebrow">A L O H A · 도심 속 휴양지로의 초대</span>
+          <span className="eyebrow">{t('hero.eyebrow')}</span>
           <h1>
-            <em>Aloha,</em>
+            <em>{t('hero.h1.italic')}</em>
             <span className="kr-line">
-              전포 한가운데
+              {t('hero.h1.kr1')}
               <br />
-              야장 술집의 시간.
+              {t('hero.h1.kr2')}
             </span>
           </h1>
-          <p className="lead">
-            한식과 양식이 어우러진 휴양지 컨셉의 도심 속 작은 섬. 시원한 야장에서
-            게즙 가득한 꽃게 요리와 한 잔의 술로 오늘의 피로를 흘려 보내세요.
-          </p>
+          <p className="lead">{t('hero.lead')}</p>
 
           <div className="hero-meta">
-            <span>
-              <i className="icon"></i> 부산 부산진구 전포대로 225 1F
-            </span>
-            <span>
-              <i className="icon"></i> 일–목 17:00 / 금–토 17:00 — 익일 04:00
-            </span>
-            <span>
-              <i className="icon"></i> 전포역 7번 출구 · 도보 4분
-            </span>
+            <span><i className="icon"></i> {t('hero.meta.address')}</span>
+            <span><i className="icon"></i> {t('hero.meta.hours')}</span>
+            <span><i className="icon"></i> {t('hero.meta.transit')}</span>
           </div>
 
           <div className="hero-actions">
@@ -49,22 +42,18 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              캐치테이블 예약 <span className="arrow">→</span>
+              {t('hero.cta.reserve')} <span className="arrow">→</span>
             </a>
-            <a href="#menu" className="btn-ghost">
-              메뉴 둘러보기
-            </a>
+            <a href="#menu" className="btn-ghost">{t('hero.cta.menu')}</a>
           </div>
         </Reveal>
 
         <Reveal delay={2} className="hero-card">
-          <div className="badge">
-            <span className="pulse"></span> NOW OPEN
-          </div>
-          <img src="/images/signature-crab-tang.jpg" alt="아로하 시그니처 꽃게탕" />
+          <div className="badge"><span className="pulse"></span> {t('hero.badge')}</div>
+          <img src="/images/signature-crab-tang.jpg" alt={t('hero.card.t2')} />
           <div className="caption">
-            <div className="t1">today's signature</div>
-            <div className="t2">아로하 꽃게탕</div>
+            <div className="t1">{t('hero.card.t1')}</div>
+            <div className="t2">{t('hero.card.t2')}</div>
           </div>
         </Reveal>
       </div>

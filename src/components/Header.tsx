@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
+import { useT } from '../i18n/I18nContext';
+import LangSwitcher from './LangSwitcher';
 
-const navItems = [
-  { href: '#about', label: '소개' },
-  { href: '#signature', label: '시그니처' },
-  { href: '#menu', label: '메뉴' },
-  { href: '#vibe', label: '분위기' },
-  { href: '#review', label: '리뷰' },
-  { href: '#visit', label: '오시는 길' },
+const navKeys = [
+  { href: '#about', tKey: 'nav.about' },
+  { href: '#signature', tKey: 'nav.signature' },
+  { href: '#menu', tKey: 'nav.menu' },
+  { href: '#vibe', tKey: 'nav.vibe' },
+  { href: '#review', tKey: 'nav.review' },
+  { href: '#visit', tKey: 'nav.visit' },
 ];
 
 export default function Header() {
+  const t = useT();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -32,38 +35,42 @@ export default function Header() {
           JEONPO ALOHA
         </a>
         <nav className="nav">
-          {navItems.map((n) => (
+          {navKeys.map((n) => (
             <a key={n.href} href={n.href}>
-              {n.label}
+              {t(n.tKey)}
             </a>
           ))}
         </nav>
-        <a
-          href="https://catchtable.co.kr/jeonpoah"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="cta-btn mobile-cta"
-        >
-          예약하기 <span className="arrow">→</span>
-        </a>
-        <button
-          className="menu-toggle"
-          aria-label="메뉴 열기"
-          onClick={() => setOpen(true)}
-        >
-          <span></span>
-        </button>
+        <div className="topbar-right">
+          <LangSwitcher />
+          <a
+            href="https://catchtable.co.kr/jeonpoah"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-btn mobile-cta"
+          >
+            {t('nav.reserve')} <span className="arrow">→</span>
+          </a>
+          <button
+            className="menu-toggle"
+            aria-label={t('nav.menuOpen')}
+            onClick={() => setOpen(true)}
+          >
+            <span></span>
+          </button>
+        </div>
       </header>
 
       <div className={`drawer${open ? ' open' : ''}`}>
-        <button className="close" aria-label="닫기" onClick={() => setOpen(false)}>
+        <button className="close" aria-label={t('nav.close')} onClick={() => setOpen(false)}>
           ✕
         </button>
-        {navItems.map((n) => (
+        {navKeys.map((n) => (
           <a key={n.href} href={n.href} onClick={() => setOpen(false)}>
-            {n.label}
+            {t(n.tKey)}
           </a>
         ))}
+        <div style={{ marginTop: 8 }}><LangSwitcher /></div>
         <a
           href="https://catchtable.co.kr/jeonpoah"
           target="_blank"
@@ -71,7 +78,7 @@ export default function Header() {
           className="cta-btn"
           onClick={() => setOpen(false)}
         >
-          예약하기 →
+          {t('nav.reserve')} →
         </a>
       </div>
     </>

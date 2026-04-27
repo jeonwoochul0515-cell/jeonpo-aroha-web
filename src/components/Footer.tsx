@@ -1,4 +1,7 @@
+import { useT } from '../i18n/I18nContext';
+
 export default function Footer() {
+  const t = useT();
   return (
     <footer>
       <div className="container">
@@ -6,42 +9,35 @@ export default function Footer() {
           <div>
             <div className="foot-brand">
               JEONPO ALOHA
-              <span className="sub">— 도심 속 휴양지</span>
+              <span className="sub">{t('foot.brand.sub')}</span>
             </div>
-            <p>
-              한식과 양식이 어우러진 휴양지 컨셉의 도심 요리주점. 새벽 3시(주말 4시)까지,
-              누군가의 하루의 끝에 함께합니다.
-            </p>
+            <p>{t('foot.p')}</p>
           </div>
 
           <div className="foot-col">
-            <h4>찾아오는 길</h4>
+            <h4>{t('foot.col1.h')}</h4>
             <ul>
-              <li>부산 부산진구 전포대로 225</li>
-              <li>1층 아로하</li>
-              <li>전포역 7번 출구 250m</li>
+              <li>{t('foot.col1.li1')}</li>
+              <li>{t('foot.col1.li2')}</li>
+              <li>{t('foot.col1.li3')}</li>
             </ul>
           </div>
 
           <div className="foot-col">
-            <h4>운영 시간</h4>
+            <h4>{t('foot.col2.h')}</h4>
             <ul>
-              <li>일–목 17:00 — 03:00</li>
-              <li>금–토 17:00 — 04:00</li>
-              <li>4인 ~ 80인 예약</li>
+              <li>{t('foot.col2.li1')}</li>
+              <li>{t('foot.col2.li2')}</li>
+              <li>{t('foot.col2.li3')}</li>
             </ul>
           </div>
 
           <div className="foot-col">
-            <h4>예약 · SNS</h4>
+            <h4>{t('foot.col3.h')}</h4>
             <ul>
               <li>
-                <a
-                  href="https://catchtable.co.kr/jeonpoah"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  캐치테이블 예약
+                <a href="https://catchtable.co.kr/jeonpoah" target="_blank" rel="noopener noreferrer">
+                  {t('foot.col3.catch')}
                 </a>
               </li>
               <li>
@@ -50,7 +46,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  네이버 플레이스
+                  {t('foot.col3.naver')}
                 </a>
               </li>
               <li>
@@ -59,7 +55,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Instagram
+                  {t('foot.col3.insta')}
                 </a>
               </li>
               <li>
@@ -70,8 +66,8 @@ export default function Footer() {
         </div>
 
         <div className="foot-bottom">
-          <span>© 2026 JEONPO ALOHA · ALL RIGHTS RESERVED.</span>
-          <span>Crafted with 🌺 for the late nights of 전포.</span>
+          <span>{t('foot.copy')}</span>
+          <span>{t('foot.tag')}</span>
         </div>
       </div>
     </footer>

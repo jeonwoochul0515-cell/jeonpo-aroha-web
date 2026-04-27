@@ -451,3 +451,145 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px;}
 .reveal-d4{transition-delay:.32s;}
 
 ::selection{background:var(--sunset);color:#fff;}
+
+/* ============== LANG SWITCHER ============== */
+.topbar-right{display:flex;align-items:center;gap:14px;}
+.lang-switcher{
+  display:inline-flex;align-items:center;gap:2px;
+  padding:4px;border-radius:999px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(8px);
+}
+.topbar.scrolled .lang-switcher{background:rgba(27,20,16,.05);border-color:rgba(27,20,16,.1);}
+.lang-switcher button{
+  font-size:.7rem;font-weight:700;letter-spacing:.12em;
+  padding:6px 11px;border-radius:999px;
+  color:rgba(245,235,219,.7);
+  transition:color .2s,background .2s;
+}
+.topbar.scrolled .lang-switcher button{color:rgba(27,20,16,.55);}
+.lang-switcher button:hover{color:var(--cream);}
+.topbar.scrolled .lang-switcher button:hover{color:var(--ink);}
+.lang-switcher button.active{
+  background:var(--sunset);color:#fff;
+  box-shadow:0 4px 12px -4px rgba(255,107,53,.6);
+}
+.topbar.scrolled .lang-switcher button.active{color:#fff;}
+.drawer .lang-switcher{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);}
+.drawer .lang-switcher button{color:rgba(245,235,219,.6);}
+.drawer .lang-switcher button.active{color:#fff;}
+
+@media (max-width:880px){
+  .topbar-right{gap:10px;}
+  .lang-switcher{padding:3px;}
+  .lang-switcher button{padding:5px 9px;font-size:.65rem;}
+}
+
+/* ============== INSTAGRAM ============== */
+.insta{
+  background:linear-gradient(180deg,#fdf3e7 0%,var(--paper) 100%);
+  position:relative;overflow:hidden;
+}
+.insta-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+}
+.insta-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  box-shadow:var(--shadow-md);
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+.insta-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.insta-card-head{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 14px;border-bottom:1px solid var(--line);
+}
+.insta-card-head .ig-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,#FEDA77,#F58529,#DD2A7B,#8134AF,#515BD4);
+  color:#fff;font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:inset 0 0 0 2px #fff;
+}
+.insta-card-head .ig-handle{font-weight:700;font-size:.9rem;color:var(--ink);}
+.insta-card-head .ig-loc{font-size:.74rem;color:rgba(27,20,16,.5);}
+.insta-card-head .ig-dots{margin-left:auto;color:rgba(27,20,16,.4);font-weight:700;letter-spacing:.04em;}
+.insta-card-img{aspect-ratio:1/1;overflow:hidden;}
+.insta-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;}
+.insta-card:hover .insta-card-img img{transform:scale(1.04);}
+.insta-card-foot{padding:12px 14px 16px;}
+.insta-card-foot .ig-icons{display:flex;gap:14px;font-size:1.3rem;color:var(--ink);margin-bottom:8px;}
+.insta-card-foot .ig-icons span{cursor:default;}
+.insta-card-foot .ig-likes{font-size:.84rem;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.insta-card-foot .ig-cap{font-size:.86rem;color:rgba(27,20,16,.78);line-height:1.5;}
+.insta-card-foot .ig-cap strong{font-weight:700;margin-right:6px;color:var(--ink);}
+
+.insta-embed-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(280px,1fr));gap:18px;
+}
+
+.insta-actions{
+  margin-top:46px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;
+}
+.btn-ghost-dark{
+  border:1px solid rgba(27,20,16,.2);color:var(--ink);
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 22px;border-radius:999px;font-weight:500;font-size:.92rem;
+  transition:all .25s;
+}
+.btn-ghost-dark:hover{background:rgba(27,20,16,.06);border-color:rgba(27,20,16,.4);}
+
+@media (max-width:880px){
+  .insta-grid,.insta-embed-grid{grid-template-columns:1fr;gap:18px;}
+}
+
+/* ============== PROMO POPUP ============== */
+.promo-backdrop{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(8,12,20,.72);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  animation:promo-fade .35s ease;
+}
+@keyframes promo-fade{from{opacity:0;}to{opacity:1;}}
+.promo-modal{
+  background:#fff;border-radius:20px;overflow:hidden;
+  width:min(720px,100%);
+  display:grid;grid-template-columns:1.05fr 1fr;
+  box-shadow:0 50px 120px -30px rgba(0,0,0,.5);
+  position:relative;
+  animation:promo-pop .45s cubic-bezier(.2,.8,.2,1);
+}
+@keyframes promo-pop{from{opacity:0;transform:translateY(20px) scale(.97);}to{opacity:1;transform:none;}}
+.promo-img{aspect-ratio:auto;background:#1B1410;}
+.promo-img img{width:100%;height:100%;object-fit:cover;}
+.promo-body{
+  padding:38px 34px 32px;
+  display:flex;flex-direction:column;justify-content:center;gap:14px;
+}
+.promo-tag{
+  display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:#fff;background:var(--sunset);padding:5px 11px;border-radius:999px;align-self:flex-start;
+}
+.promo-body h3{
+  font-family:var(--serif-kr);font-weight:700;font-size:clamp(1.3rem,2vw,1.55rem);
+  line-height:1.35;color:var(--ink);
+}
+.promo-body p{font-size:.95rem;line-height:1.7;color:rgba(27,20,16,.72);}
+.promo-actions{margin-top:8px;display:flex;flex-wrap:wrap;gap:10px;}
+.promo-actions .btn-primary{padding:11px 18px;font-size:.86rem;}
+.promo-actions .btn-ghost-dark{padding:11px 18px;font-size:.86rem;}
+.promo-close{
+  position:absolute;top:12px;right:12px;z-index:2;
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(255,255,255,.92);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+  box-shadow:0 6px 18px -6px rgba(0,0,0,.35);
+}
+.promo-close:hover{background:#fff;}
+
+@media (max-width:680px){
+  .promo-modal{grid-template-columns:1fr;max-height:90vh;overflow:auto;}
+  .promo-img{aspect-ratio:4/3;}
+  .promo-body{padding:26px 22px 28px;}
+}
