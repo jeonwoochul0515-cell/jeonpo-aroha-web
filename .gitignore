@@ -41,6 +41,11 @@ _source/
 # tooling
 .claude/
 
+# stray downloads at repo root (use public/images/ instead)
+/다운로드*.jpg
+/다운로드*.png
+/KakaoTalk_*.jpg
+
 # tsc build output for vite.config
 vite.config.d.ts
 vite.config.js
